@@ -1,0 +1,86 @@
+<app-headercomponent></app-headercomponent>
+<section class="background-section flex flex-row justify-end h-[1000px]">
+    <div class="bg-red-200 w-[50%] h-[100%] mb-10">
+            <h1 class="font-bold mt-8 text-center">
+                Kindly fill the form below
+            </h1>
+            <form action="" class="mt-4 flex flex-col justify-center items-center" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+                <div class="flex flex-row justify-between w-[90%]">
+                    <label for="fname">First Name:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="firstName" id="fname" placeholder="Your first name" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname">Last Name:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="lastName" id="fname" placeholder="Your last name" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Email:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="Email" id="fname" placeholder="Your email" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Phone Number:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="phoneNumber" id="fname" placeholder="Your phone number" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Reg Number:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="regNumber" id="fname" placeholder="Your registeration number" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">DOB:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="date" name="date" id="fname" placeholder="date of birth" ngModel>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Vehicle Type:</label>
+                    <select name="vehicleType" class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]" (change)="onOptionSelected($event)" ngModel>
+                        <option *ngFor="let item of dataList" [value]="item.id" >{{ item.bodyType }}</option>
+                    </select>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Vehicle Make:</label>
+                    <select name="vehicleMake" class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]" (change)="onOptionSelectedMake($event)" ngModel>
+                        <option *ngFor="let item of cars" [value]="item.id" >{{ item.carMake }}</option>
+                    </select>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Vehicle Model:</label>
+                    <select name="vehicleModel" class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]" (change)="onOptionSelectedModel($event)" ngModel>
+                        <option *ngFor="let item of cars" [value]="item.id" >{{ item.model }}</option>
+                    </select>
+                </div>
+                <div class="flex flex-row justify-between w-[90%] mt-2">
+                    <label for="fname" class="text-left">Amount:</label>
+                    <input
+                     class="rounded-lg px-4 py-2 border border-blue-500 border-solid w-[438px]"
+                     type="text" name="amount" value="{{amount}}" id="fname" placeholder="premium" readonly ngModel>
+                </div>
+                <!-- <div>
+                    <input type="submit" value="submit" class="bg-green-500 text-white w-[200px] h-[50px] rounded-md mt-8">
+                </div> -->
+                <div class="bg-green-500 text-white w-[200px] h-[50px] rounded-md mt-8 flex flex-row justify-center items-center">
+                    <button
+                        angular4-paystack
+                        [paystackOptions]="options"
+                        (paymentInit)="paymentInit()"
+                        (onClose)="paymentCancel()"
+                        (callback)="paymentDone($event)"
+                    >
+                        Pay with Paystack
+                    </button>
+                </div>
+            </form>
+
+    </div>
+</section>
+<app-footer></app-footer>
