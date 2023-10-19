@@ -69,7 +69,7 @@ export class HomescreenComponent implements OnInit{
   paymentDone(ref: any) {
     this.title = 'Payment successfull';
     console.log(this.title, ref);
-    this.http.post('https://localhost:7148/api/PurchasePremium/AddOrder', this.payload)
+    this.http.post('https://allianzbackend.onrender.com/api/PurchasePremium/AddOrder', this.payload)
     .subscribe(
       (response) => {
         console.log('POST request successful:', response);
@@ -129,7 +129,7 @@ export class HomescreenComponent implements OnInit{
   }
 
   private fetchVehicleTypes(){
-    this.http.get<Response>("https://localhost:7148/api/Premium/GetPremiums")
+    this.http.get<Response>("https://allianzbackend.onrender.com/api/Premium/GetPremiums")
     .subscribe((res)=>{
       console.log(res)
       this.dataList = res.data
@@ -139,7 +139,7 @@ export class HomescreenComponent implements OnInit{
   }
 
   private fetchCarTypes(){
-    this.http.get<ResponseTwo>("https://localhost:7148/api/Car/GetCars")
+    this.http.get<ResponseTwo>("https://allianzbackend.onrender.com/api/Car/GetCars")
     .subscribe((res)=>{
       console.log("response",res)
       this.cars = res.data
